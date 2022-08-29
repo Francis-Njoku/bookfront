@@ -1,5 +1,5 @@
 const express = require("express");
-const serverStatic = require("server-static");
+const serverStatic = require("serve-static");
 const path = require("path");
 
 const app = express();
