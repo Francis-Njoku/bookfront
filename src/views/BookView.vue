@@ -87,7 +87,7 @@ const book = computed(() => store.state.currentBook.data);
 const bookFinished = ref(false);
 
 let duel = route.params.id;
-cd;
+
 let model = ref({
   comment: "",
 });
