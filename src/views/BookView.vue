@@ -43,7 +43,6 @@
           />
         </div>-->
         <form @submit.prevent="submitBook">
-          <input type="text" name="postid" id="postid" v-model="model.postid" />
           <!---<input type="hidden" v-model="model.status" :value="'active'" />-->
 
           <label
@@ -75,10 +74,11 @@
 <script setup>
 //import { comment } from "postcss";
 import { computed, watch, ref } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
 import QuestionViewer from "../components/viewer/QuestionViewer.vue";
 const route = useRoute();
+const router = useRouter();
 const store = useStore();
 
 const loading = computed(() => store.state.currentBook.loading);
@@ -87,7 +87,7 @@ const book = computed(() => store.state.currentBook.data);
 const bookFinished = ref(false);
 
 let duel = route.params.id;
-
+cd;
 let model = ref({
   comment: "",
 });
@@ -106,7 +106,10 @@ function submitBook() {
     })
     .then((response) => {
       if (response.status === 200 || response.status === 201) {
-        bookFinished.value = true;
+        router.push({
+          name: "BookView",
+          params: { id: book.book.id },
+        });
       }
     });
 }
